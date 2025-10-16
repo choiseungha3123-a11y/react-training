@@ -1,16 +1,21 @@
 // 1. useState를 import 한다.   
 import { useState } from "react";
 export default function MyListCard({title, imgUrl, content}) {
+    
     //2. useState를 선언한다.
     const [scnt , setScnt] = useState(0); // cnt는 변수, setScnt는 cnt를 변경하는 함수 변수의 초깃값 0을 넣어준다.
     const [dcnt , setDcnt] = useState(0); // cnt는 변수, setDcnt는 cnt를 변경하는 함수 변수의 초깃값 0을 넣어준다.  
+    
     let cnt = 0; 
+    // 좋아요
     const handleClick = () => {
         cnt = cnt + 1; // cnt++ 도 가능 // cnt는 변수이기 때문에 화면에 업데이트 되지 않는다.   
-        setScnt(scnt + 1); // setScnt를 호출할 때마다 cnt가 +1씩 변경된다.   
+        setScnt(scnt + 1); // setScnt를 호출할 때마다 cnt가 +1씩 변경된다.
+        //setScnt(scnt => scnt + 1); // 위와 동일한 표현이지만, 함수형태가 들어갔기 때문에 똑같은 형태를 밑에 적으면, 적은만큼 좋아요가 더 늘어나는 형태가 된다 EX)setScnt(scnt + n)
         console.log(`${title} click : ${cnt}`) // UseState(장치)를 사용하지 않으면 화면에 업데이트 되지 않음.
     }
     
+    // 싫어요
     const handleClick2 = () => {
         setDcnt(dcnt + 2); // setDcnt를 호출할 때마다 cnt가 +2씩 변경된다.  
     }
