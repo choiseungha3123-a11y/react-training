@@ -4,10 +4,10 @@ import fooddata from "./fooddata.json"
 import { useState } from "react"
 
 // 카테고리
-const categories = [
-  ...new Set(fooddata.map(item => item["운영주체 분류"].replaceAll(" ", "")))
-] ;
-console.log("categories", categories)
+// const categories = [
+//   ...new Set(fooddata.map(item => item["운영주체 분류"].replaceAll(" ", "")))
+// ] ;
+// console.log("categories", categories)
 
 export default function FoodMain() {
     const [foodData, setfoodData] = useState(fooddata);
