@@ -25,7 +25,7 @@ export default function MyListCard({title, imgUrl, content}) {
                     p-5
                     border-1 border-gray-400">
         <div className="w-1/3">
-            <img src={imgUrl} alt={title} />
+            <img src={imgUrl} alt={title} /> //
         </div>
         <div>
         <div className="w-2/3 h-44 flex flex-col justify-between">
