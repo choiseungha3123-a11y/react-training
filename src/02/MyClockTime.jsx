@@ -10,8 +10,8 @@ export default function MyClockTime() {
         return () => clearInterval(timerId)
     }, []);
     return (
-        <div className="w-128 
-                        text-center m-5 p-5
+        <div className="w-128 bg-black  text-white
+                        text-center m-5 p-5 rounded-xl
                         font-bold text-2xl">
             현재시각 : {currentTime.toLocaleTimeString()}
         </div>
