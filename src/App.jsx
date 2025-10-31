@@ -14,14 +14,14 @@ import MyRef from './11/MyRef'
 import RefCal from './12/RefCal'
 import Gallery from './13/Gallery'
 import Festival from './14/Festival'
-
+import RouteMain from './15/RouteMain'
 
 function App() {  // function은 반드시 return문을 가진다. //img src="/vite.svg" 형태는 public에 vite.svg가 존재하기 때문에 이런식으로 쓸 수 있다.
   return (
     <div className='w-full h-screen flex flex-col overflow-y-hidden'>
       <Header />     
       <main className='container mx-auto flex flex-col flex-grow overflow-y-auto'>
-        <Festival />  
+        <RouteMain />  
       </main>
       <Footer />
     </div>
