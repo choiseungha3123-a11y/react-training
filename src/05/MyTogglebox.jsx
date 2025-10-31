@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Tailbutton from "../components/Tailbutton"
+import Tailbutton from "../components/TailButton"
 
 const BoxStyle = {
   blue : {

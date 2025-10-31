@@ -26,19 +26,31 @@ export default function BoxOffice() {
         setInfo(tm);
     }
 
-    const getFetchData = (dt) => {
-        const apiKey = import.meta.env.VITE_MV_API;
-        const baseUrl = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?';
-        let url = `${baseUrl}key=${apiKey}&targetDt=${dt}`;
-        console.log(url)
+    // const getFetchData = (dt) => {
+    //     const apiKey = import.meta.env.VITE_MV_API;
+    //     const baseUrl = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?';
+    //     let url = `${baseUrl}key=${apiKey}&targetDt=${dt}`;
+    //     console.log(url)
 
-        fetch(url)
-            .then(resp => resp.json())
-            .then(data => {
-                let boxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
-                setboxOfficeList(boxOfficeList);
-            })
-            .catch(err => console.log(err));
+    //     fetch(url)
+    //         .then(resp => resp.json())
+    //         .then(data => {
+    //             let boxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
+    //             setboxOfficeList(boxOfficeList);
+    //         })
+    //         .catch(err => console.log(err));
+    // }
+
+    const getFetchData = async (dt) => { 
+         const apiKey = import.meta.env.VITE_MV_API;
+
+         const baseUrl = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?';
+         let url = `${baseUrl}key=${apiKey}&targetDt=${dt}`;
+         console.log(url)
+
+         const resp = await fetch(url);
+         const data = await resp.json();
+        setboxOfficeList(data.boxOfficeResult.dailyBoxOfficeList) ;
     }
 
     //컴포넌트 생성시 1번만 실행

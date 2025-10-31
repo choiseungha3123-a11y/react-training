@@ -15,6 +15,10 @@ const BTStyle = {
     lime : {
         base : "bg-lime-500",
         hover : "hover:bg-lime-900",
+    },
+    red : {
+        base : "bg-red-500",
+        hover : "hover:bg-red-900",
     }
 }
 
@@ -24,6 +28,7 @@ export default function Tailbutton({color, caption, onHandle}) {
     return (
     <button className={`${btstyle.base}  text-white rounded
                         ${btstyle.hover} hover:font-bold px-4 py-2
+                        cursor-pointer
                                          `}
             onClick={onHandle}>
         {caption}

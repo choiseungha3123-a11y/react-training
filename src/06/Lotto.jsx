@@ -1,6 +1,6 @@
 import { useState } from "react"
 import TailBall from "../components/TailBall"
-import Tailbutton from "../components/Tailbutton"
+import Tailbutton from "../components/TailButton"
 
 export default function Lotto() {
   const [tags, setTags] = useState([]) // const [num, setNum] = useState(0)으로 해도 됨

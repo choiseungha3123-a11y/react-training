@@ -1,5 +1,5 @@
 import FoodCard from "./FoodCard"
-import Tailbutton from "../components/Tailbutton"
+import Tailbutton from "../components/TailButton"
 import fooddata from "./fooddata.json"
 import { useState } from "react"
 
