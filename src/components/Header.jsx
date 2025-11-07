@@ -35,6 +35,11 @@ export default function Header() {
                   충전소
                   </Link> 
                   </li>
+                  <li>
+                  <Link to="/jotai" className='hover:font-bold hover:bg-blue-50 p-2 border rounded-sm hover:text-blue-900'>
+                  조타이
+                  </Link> 
+                  </li>
               </ul>
             </nav>
           </header>

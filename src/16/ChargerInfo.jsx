@@ -6,7 +6,10 @@ import stat from "./data/stat.json"
 
 import TailSelect from "../components/TailSelect"
 import Tailbutton from "../components/TailButton"
+// import TailCard from "../components/TailCard" // 사용하지 않아 주석 처리했습니다.
 import ChargerCard from "./ChargerCard"
+
+import { Link } from "react-router-dom";
 
 import Loadercat from "../animation_img/Loadercat.json"
 import Lottie from 'react-lottie';
@@ -23,7 +26,6 @@ export default function ChargerInfo() {
       preserveAspectRatio: 'xMidYMid slice'
     }
   };
-
 
   // 상태변수
   const [tdata, setTdata] = useState([])
@@ -118,16 +120,16 @@ export default function ChargerInfo() {
       sel4Ref.current.focus();
       return;
     }
-    
-    setTdata([]) ;
-    setIsLoading(false) ;
-    getFetchData() ;
+
+    setTdata([]);
+    setIsLoading(false);
+    getFetchData();
 
   }
 
   // fetch가 완료되면
   useEffect(() => {
-    if (tdata.length == 0) return;
+    if (tdata && tdata.length == 0) return;
 
     console.log(tdata)
   }, [tdata]);
@@ -168,18 +170,71 @@ export default function ChargerInfo() {
         <Tailbutton caption="초기화" color="gray" onHandle={handleCancel} />
       </div>
       {
-        (tdata.length != 0) && 
+        (tdata && tdata.length != 0) &&
         <div className="w-full h-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4 mt-5">
-          <ChargerCard color="orange" title="충전소 개수" num={tdata.length} />
+          <ChargerCard color="orange" title="충전기 개수" num={tdata.length} />
           {
-            Object.keys(stat).map(scode => <ChargerCard key={stat[scode]+scode}
-                                                        color="blue" 
-                                                        title={stat[scode]}
-                                                        num={tdata.filter(item => item.stat == scode).length} />)
+            Object.keys(stat).map(scode => <ChargerCard key={stat[scode] + scode}
+              color="blue"
+              title={stat[scode]}
+              num={tdata.filter(item => item.stat == scode).length} />)
           }
 
         </div>
       }
+      <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+          (tdata && tdata.length > 0)
+            ?
+            (() => {
+              const uniqueStatNms = new Set();
+              return tdata.filter(item => {
+                // 중복 statNm 제거 로직
+                if (uniqueStatNms.has(item.statNm)) {
+                  return false;
+                }
+                uniqueStatNms.add(item.statNm);
+                return true;
+              }).map((item, idx) => {
+                // 상태별 색상 로직
+                const chargerStatus = stat[item.stat];
+                let bgColorClass = 'bg-white';
+                let borderColorClass = 'border-gray-300';
+
+                if (chargerStatus === '충전대기') {
+                  bgColorClass = 'bg-green-100';
+                  borderColorClass = 'border-green-500';
+                } else if (chargerStatus === '충전중') {
+                  bgColorClass = 'bg-red-100';
+                  borderColorClass = 'border-red-500';
+                } else {
+                  // 상태미확인, 통신이상, 점검중 등 기타 상태
+                  bgColorClass = 'bg-gray-100';
+                  borderColorClass = 'border-gray-500';
+                }
+
+                const cardClasses = `border p-4 rounded-lg shadow-sm transition duration-150 ease-in-out ${borderColorClass} ${bgColorClass} hover:shadow-lg`;
+
+
+                return (
+                  <Link to="/charger/detail"
+                    state={{ contents: item }}
+                    key={item.statId + idx}
+                    className="block"
+                  >
+                    <div className={cardClasses}>
+                      <h3 className="font-bold text-lg text-blue-800">{item.statNm}</h3>
+                      <p className="text-sm text-gray-600 truncate">{item.addr}</p>
+                      <p className="text-xs text-gray-700 mt-1 font-semibold">상태: {chargerStatus || '정보없음'}</p>
+                    </div>
+                  </Link>
+                );
+              })
+            })()
+            : // JSX 문법 오류 수정: 삼항 연산자의 else 부분
+            (isLoading == false && <p className="col-span-full text-center text-gray-500">검색 결과가 없습니다.</p>)
+        }
+      </div>
       {
         isLoading &&
         <div className="fixed top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-white bg-opacity-80 z-50">

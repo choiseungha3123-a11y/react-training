@@ -18,6 +18,9 @@ import Festival from './14/Festival'
 import RouteMain from './15/RouteMain'
 import FestivalContents from './14/FestivalContents'
 import ChargerInfo from './16/ChargerInfo'
+import ChargerDetail from './16/ChargerDetail'
+import JotaiCnt from './17/JotaiCnt'
+
 
 function App() {  // function은 반드시 return문을 가진다. //img src="/vite.svg" 형태는 public에 vite.svg가 존재하기 때문에 이런식으로 쓸 수 있다.
   return (
@@ -33,6 +36,8 @@ function App() {  // function은 반드시 return문을 가진다. //img src="/v
           <Route path='/festival' element={<Festival />} />
           <Route path='/festival/contents' element={<FestivalContents />} />
           <Route path='/charger' element={<ChargerInfo />} />
+          <Route path='/charger/detail' element={<ChargerDetail />} />
+          <Route path='/jotai' element={<JotaiCnt />} />
         </Routes>
       </main>
       <Footer />

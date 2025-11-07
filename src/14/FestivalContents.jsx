@@ -12,7 +12,7 @@ export default function FestivalContents() {
     }
 
     const kakaoMapUrl = `https://map.kakao.com/link/map/${contents?.MAIN_PLACE.replace(',','').replace(' ','')},${contents?.LAT},${contents?.LNG}`;
-  console.log(kakaoMapUrl)
+    console.log(kakaoMapUrl)
 
 
     return (
