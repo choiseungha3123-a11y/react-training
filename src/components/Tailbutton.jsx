@@ -19,6 +19,10 @@ const BTStyle = {
     red : {
         base : "bg-red-500",
         hover : "hover:bg-red-900",
+    },
+    gray : {
+        base : "bg-gray-500",
+        hover : "hover:bg-gray-900",
     }
 }
 

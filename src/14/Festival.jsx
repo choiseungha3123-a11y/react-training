@@ -1,5 +1,6 @@
 import TailCard from "../components/TailCard"
 import { useRef, useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 export default function Festival() {
     const [tdata, setTdata] = useState([]);
@@ -66,12 +67,17 @@ export default function Festival() {
                 </select>
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
                     {
-                        areaFestival.map(item => <TailCard key={item.UC_SEQ}
-                            imgurl={item.MAIN_IMG_THUMB}
-                            title={item.MAIN_TITLE.replace('(한,영, 중간,중번,일)', '')}
-                            subtitle={item.TITLE + item.TRFC_INFO}
-                            tag={item.USAGE_DAY_WEEK_AND_TIME}
-                        />)
+                        areaFestival.map((item, idx) => <Link to="/festival/contents"
+                                                        state = {{contents:item}}            
+                                                        key={item.UC_SEQ + idx}>
+                                                        <TailCard key={item.UC_SEQ}
+                                                                  imgurl={item.MAIN_IMG_THUMB}
+                                                                  title={item.TITLE}
+                                                                  subtitle={<>{item.SUBTITLE}<br /><br />{item.TRFC_INFO}</>}
+                                                                  tag={item.USAGE_DAY_WEEK_AND_TIME}
+                                                        />                                                     
+                                                        </Link>
+                                        )
                     }
                 </div>
             </div>
