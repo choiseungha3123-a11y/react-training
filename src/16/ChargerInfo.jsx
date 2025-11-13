@@ -105,6 +105,7 @@ export default function ChargerInfo() {
       sel1Ref.current.focus();
       return;
     }
+    
     if (sel2Ref.current.value === "") {
       alert("구/군/시를 선택하세요");
       sel2Ref.current.focus();
@@ -217,7 +218,7 @@ export default function ChargerInfo() {
 
 
                 return (
-                  <Link to="/charger/detail"
+                  <Link to="/ChargerInfo/detail"
                     state={{ contents: item }}
                     key={item.statId + idx}
                     className="block"

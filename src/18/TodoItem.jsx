@@ -1,0 +1,75 @@
+import TailButton from "../components/TailButton"
+import { useSetAtom } from "jotai";
+import { todosAtom } from "./atomsTodo";
+import { useState } from "react";
+
+export default function TodoItem({ todo }) {
+    const setTodos = useSetAtom(todosAtom);
+    const [isEdit, setIsEdit] = useState(false);
+    const [editText, setEditText] = useState(todo.text);
+
+    const handleCheckboxChange = () => {
+        setTodos(
+            prev => prev.map(t => t.id == todo.id ? { ...t, completed: !todo.completed } : t)
+        );
+    }
+
+    const handleSave = () => {
+        setTodos(
+            prev => prev.map(t => t.id == todo.id ? { ...t, text: editText } : t)
+        )
+    }
+
+    const handleCancle = () => {
+        setIsEdit(false);
+        setEditText(todo.text);
+    }
+
+    const handleDelete = () => {
+        setTodos(
+            prev => prev.filter( t => t.id != todo.id)
+        )
+    }
+
+    return (
+        <div className="w-full max-w-3xl flex justify-center items-center
+                        my-4 space-x-6">
+
+            <input type="checkbox"
+                className="w-6 h-6 cursor-pointer"
+                checked={todo.completed}
+                onChange={handleCheckboxChange} />
+
+            {isEdit ? <input type="text"
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                className="flex-1 p-2 border border-gray-200
+                          rounded-sm
+                          focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+                : <span className="flex-1 p-2">
+                    {todo.text}
+                </span>
+            }
+            {
+                isEdit ?
+                    <>
+                        <TailButton color="lime"
+                            caption="저장"
+                            onHandle={handleSave} />
+                        <TailButton color="orange"
+                            caption="취소"
+                            onHandle={handleCancle} /></>
+                    : <>
+                        <TailButton color="lime"
+                            caption="수정"
+                            onHandle={() => setIsEdit(true)} />
+                        <TailButton color="orange"
+                            caption="삭제"
+                            onHandle={handleDelete} />
+                    </>
+            }
+
+
+        </div>
+    )
+}

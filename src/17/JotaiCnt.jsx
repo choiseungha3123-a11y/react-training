@@ -1,15 +1,10 @@
-import JotaiBt from "./JotaiBt"
-import { useState, useEffect } from "react"
-
+import JotaiBt from "./JotaiBt" ;
+import { useAtomValue } from "jotai" ;
+import { cntAtom, dbCntAtom } from "./atomsCnt" ;
 
 export default function JotaiCnt() {
-    const [cnt, setCnt] = useState(0)
-    const [dbcnt, setDbCnt] = useState(0)
-
-    useEffect(() => {
-        setDbCnt(cnt * 2)
-    }, [cnt])
-
+    const cnt = useAtomValue(cntAtom) ;
+    const dbcnt = useAtomValue(dbCntAtom) ;
 
     return (
         <div className='w-full max-w-3xl mx-auto'>
@@ -27,7 +22,7 @@ export default function JotaiCnt() {
                     double count : {dbcnt}
                 </div>
             </div>
-            <JotaiBt cnt={cnt} setCnt={setCnt} />
+            <JotaiBt />
            
         </div>
     )

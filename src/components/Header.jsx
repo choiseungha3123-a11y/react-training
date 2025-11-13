@@ -31,13 +31,23 @@ export default function Header() {
                   </Link> 
                   </li>
                   <li>
-                  <Link to="/charger" className='hover:font-bold hover:bg-blue-50 p-2 border rounded-sm hover:text-blue-900'>
+                  <Link to="/ChargerInfo" className='hover:font-bold hover:bg-blue-50 p-2 border rounded-sm hover:text-blue-900'>
                   충전소
                   </Link> 
                   </li>
-                  <li>
+                  {/* <li>
                   <Link to="/jotai" className='hover:font-bold hover:bg-blue-50 p-2 border rounded-sm hover:text-blue-900'>
                   조타이
+                  </Link> 
+                  </li> */}
+                  <li>
+                  <Link to="/todo" className='hover:font-bold hover:bg-blue-50 p-2 border rounded-sm hover:text-blue-900'>
+                  할일목록
+                  </Link> 
+                  </li>
+                  <li>
+                  <Link to="/subway" className='hover:font-bold hover:bg-blue-50 p-2 border rounded-sm hover:text-blue-900'>
+                  지하철 공기
                   </Link> 
                   </li>
               </ul>

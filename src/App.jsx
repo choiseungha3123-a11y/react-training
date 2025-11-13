@@ -14,12 +14,14 @@ import Traffic from './10/Traffic'
 import MyRef from './11/MyRef'
 import RefCal from './12/RefCal'
 import Gallery from './13/Gallery'
-import Festival from './14/Festival'
+import Festival from './14_2/Festival'
 import RouteMain from './15/RouteMain'
-import FestivalContents from './14/FestivalContents'
+import FestivalContents from './14_2/FestivalContent'
 import ChargerInfo from './16/ChargerInfo'
 import ChargerDetail from './16/ChargerDetail'
-import JotaiCnt from './17/JotaiCnt'
+// import JotaiCnt from './17/JotaiCnt'
+import TodoList from './18_1/TodoList'
+import Subway from './19/Subway'
 
 
 function App() {  // function은 반드시 return문을 가진다. //img src="/vite.svg" 형태는 public에 vite.svg가 존재하기 때문에 이런식으로 쓸 수 있다.
@@ -35,9 +37,11 @@ function App() {  // function은 반드시 return문을 가진다. //img src="/v
           <Route path='/gal' element={<Gallery />} />
           <Route path='/festival' element={<Festival />} />
           <Route path='/festival/contents' element={<FestivalContents />} />
-          <Route path='/charger' element={<ChargerInfo />} />
-          <Route path='/charger/detail' element={<ChargerDetail />} />
-          <Route path='/jotai' element={<JotaiCnt />} />
+          <Route path='/ChargerInfo' element={<ChargerInfo />} />
+          <Route path='/ChargerInfo/detail' element={<ChargerDetail />} />
+          {/* <Route path='/jotai' element={<JotaiCnt />} /> */}
+          <Route path='/todo' element={<TodoList />} />
+          <Route path='/subway' element={<Subway />} />
         </Routes>
       </main>
       <Footer />

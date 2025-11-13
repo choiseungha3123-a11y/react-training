@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
+import TailButton from "../components/TailButton"
 
 export default function ChargerDetail() {
     const location = useLocation();
@@ -7,8 +8,8 @@ export default function ChargerDetail() {
 
     const navigate = useNavigate();
     const handleHome = () => {
-        navigate('/ChargerInfo');
-    }
+    navigate(`/chargerinfo`);
+  }
 
     // 데이터가 제대로 넘어오지 않았을 경우 처리
     if (!contents) {
@@ -67,7 +68,7 @@ export default function ChargerDetail() {
                 </div>
             </div>
             <div className="w-full flex justify-center items-center mt-5">
-                <TailButton caption="검색페이지로" color="blue" onHandle={handleHome} />
+                <TailButton caption="목록으로" color="blue" onHandle={handleHome} />
             </div>
         </div>
     )
