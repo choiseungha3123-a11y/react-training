@@ -1,4 +1,4 @@
-import MyTogglebox from "./Mytogglebox"
+import MyTogglebox from "./MyTogglebox"
 
 export default function MyToggle() {
   return (
